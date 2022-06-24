@@ -1,30 +1,25 @@
+
+
 class Passenger
+attr_reader :name
+def initialize(name)
+    @name = name
+    @flight_numbers = []
+end
 
-    attr_reader :name
-    def initialize(name)
-        @name = name
-        @flight_numbers = []
+def has_flight?(flight_number)
+    if @flight_numbers.include?(flight_number.downcase) ||  @flight_numbers.include?(flight_number.upcase)
+        return true
+    else
+        return false
     end
-    
-    def has_flight?(string)
+end
 
-        if @flight_numbers.include?(string.downcase)
-            return true
-        elsif @flight_numbers.include?(string.capitalize)
-            return true
-        elsif @flight_numbers.include?(string.upcase)
-            return true
-        else
-            false
-        end
+def add_flight(flight_number)
+    unless self.has_flight?(flight_number)
+        @flight_numbers.push(flight_number.upcase)
     end
-    
-    def add_flight(string)
-    
-        unless has_flight?(string)
-            @flight_numbers << string.upcase
-        end
-    end
+end
 
 
 
@@ -40,4 +35,6 @@ class Passenger
 
 
 
-    end
+
+
+end
